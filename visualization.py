@@ -1,3 +1,6 @@
+import matplotlib
+
+matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
 from sklearn import datasets
 from sklearn.manifold import TSNE
@@ -17,6 +20,6 @@ print(X_reduced.shape)
 
 plt.scatter(X_reduced[:, 0], X_reduced[:, 1], c=digits.target)
 plt.colorbar()
-plt.show()  # seabornでもmatplotlibでも表示されない．なぜか．(windowsだから？)
+plt.show()  # seabornでもmatplotlibでも表示されない．なぜか．(windowsだから？)
 # 学校のmac miniだとplt.show()を入れることで表示
 # <matplotlib.colorbar.Colorbar at 0x7ff21173ee90>
