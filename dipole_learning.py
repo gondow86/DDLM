@@ -1,8 +1,13 @@
+from cmath import log
 from math import exp
 import torch
 from scipy.misc import derivative
 import numpy as np
 import math
+
+def init_dipole():
+    return
+
 
 def negative_distance_loss(gamma):
     """
@@ -17,7 +22,7 @@ def negative_distance_loss(gamma):
         distance_k = abs(pow(f_thetaX - m_iN[k]))
         sum_p_yx += exp(-1 * gamma * distance_k))
     p_yx = exp(-1 * gamma * distance_i) / sum_p_yx
-    return
+    return -1 * log(p_yx)
 
 def positive_distance_loss(gamma):
     return
