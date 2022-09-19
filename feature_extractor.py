@@ -2,12 +2,16 @@ import pandas as pd
 import numpy as np
 import torch
 import torch.nn as nn
-import matplotlib
 import matplotlib.pyplot as plt
 
 n_features = 128
 n_epochs = 800
 batch_size = 96
+beta = 1
+gamma = 1
+lambda_0 = 0.1
+lambda_1 = 0.1
+learning_rate = 0.0001
 
 
 def min_max_normalize(x):
@@ -31,7 +35,9 @@ class ConvNet1D(nn.Module):
             nn.LeakyReLU(),
             nn.Dropout(p=0.2),
         )
-        self.last_layer = nn.TransformerEncoderLayer(d_model=n_output, nhead=8)
+        self.last_layer = nn.TransformerEncoderLayer(
+            d_model=n_output, nhead=8, batch_first=True
+        )
 
     def forward(self, x):
         out = self.layer1(x)
@@ -42,4 +48,8 @@ class ConvNet1D(nn.Module):
 
 
 model = ConvNet1D(1, 8, 16, 64)
+print(model)
+# data = torch.randn(batch_size, 1, 1250)
+# out = model(data)
+# print(out.size())
 # optimizer = torch.optim.Adam(model.parameters(), lr=0.0001) # 学習をするフェーズで初めて必要
