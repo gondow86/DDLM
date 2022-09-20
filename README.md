@@ -1,2 +1,2 @@
 # DDLM (Dipole Deep Learning Method)
-Development stopped now
+Development stopped
